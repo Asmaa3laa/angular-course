@@ -1,0 +1,36 @@
+<button class="btn btn-success" (click)= "showAdd()">Add Student</button>
+<table class="table">
+    <thead> 
+        <tr>
+            <td>#</td>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Age</td>
+            <!-- <td>Details</td> -->
+            <td>Delete</td>
+            <td>Edit</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of students;let i = index">
+            <td>{{i}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <!-- <td>
+                <button class="btn btn-info" >Details</button>
+            </td> -->
+            <td>
+                <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+            </td>
+            <td>
+                <button class="btn btn-info" (click)="onEdit(item.id)">Edit</button>
+            </td>
+            
+        </tr>
+    </tbody>
+    <app-add-student *ngIf="ComponentToShow == 2"></app-add-student>
+    <app-student-edit [std]="studentEdit" *ngIf="ComponentToShow == 1"></app-student-edit>
+
+</table>
